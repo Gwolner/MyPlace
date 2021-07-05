@@ -6,13 +6,13 @@ public class Local {
     private String lng;
     private String cidade;
     private String estado;
-    private AvaliacoesLocal avaliacao;
+    private float avaliacao;
     private String observacao;
     private CategoriasLocal categoria;
     private String diretorioFotos; //atributo que armazena o caminho do diretório das fotos do local.
 
     public Local(String nome, String lat, String lng, String cidade, String estado,
-                 AvaliacoesLocal avaliacao, String observacao, CategoriasLocal categoria){
+                 float avaliacao, String observacao, CategoriasLocal categoria){
         this.nome = nome;
         this.lat = lat;
         this.lng = lng;
@@ -63,11 +63,11 @@ public class Local {
         this.estado = estado;
     }
 
-    public AvaliacoesLocal getAvaliacao() {
+    public float getAvaliacao() {
         return avaliacao;
     }
 
-    public void setAvaliacao(AvaliacoesLocal avaliacao) {
+    public void setAvaliacao(float avaliacao) {
         this.avaliacao = avaliacao;
     }
 

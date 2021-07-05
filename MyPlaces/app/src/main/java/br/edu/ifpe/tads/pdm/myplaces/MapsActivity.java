@@ -6,7 +6,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +28,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import br.edu.ifpe.tads.pdm.myplaces.databinding.ActivityMapsBinding;
 
@@ -118,10 +124,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                mMap.addMarker(new MarkerOptions().
-                        position(latLng).
-                        title("Adicionado em " + new Date()).
-                        icon(BitmapDescriptorFactory.defaultMarker(0)));
+                Double lat = latLng.latitude;
+                Double lng = latLng.longitude;
+
+                Geocoder gcd = new Geocoder(getApplicationContext(), Locale.getDefault());
+
+                try {
+                    List<Address> addresses = gcd.getFromLocation(lat, lng, 1);
+
+                    String nomeEstado = addresses.get(0).getAdminArea();
+                    String nomeCidade = addresses.get(0).getSubAdminArea();
+
+                    Intent intent = new Intent(getApplicationContext(), FormLocalActivity.class);
+                    intent.putExtra("cidade", nomeCidade);
+                    intent.putExtra("estado", nomeEstado);
+                    intent.putExtra("lat", lat);
+                    intent.putExtra("lng", lng);
+
+                    startActivity(intent);
+
+                    /*
+                    mMap.addMarker(new MarkerOptions().
+                            position(latLng).
+                            title("Adicionado em " + addresses.get(0).getAdminArea() + " "+addresses.get(0).getSubAdminArea()).
+                            icon(BitmapDescriptorFactory.defaultMarker(0))); */
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
             }
         });
 

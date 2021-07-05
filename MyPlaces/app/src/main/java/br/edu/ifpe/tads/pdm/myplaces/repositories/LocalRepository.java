@@ -2,33 +2,32 @@ package br.edu.ifpe.tads.pdm.myplaces.repositories;
 
 import java.util.ArrayList;
 
-import br.edu.ifpe.tads.pdm.myplaces.entities.AvaliacoesLocal;
 import br.edu.ifpe.tads.pdm.myplaces.entities.CategoriasLocal;
 import br.edu.ifpe.tads.pdm.myplaces.entities.Local;
 
-public final class LocalRepository {
-    private ArrayList<Local> locais;
+public class LocalRepository {
+    private ArrayList<Local> locais = new ArrayList<Local>();
     private static LocalRepository instanceLocalRepository;
 
     private LocalRepository(){
         //alimentação do banco com alguns locais
         Local aldeiaDoPapaiNoelGramado = new Local(
                 "Aldeia do Papai Noel",
-                "29.37",
+                "-29.37",
                 "-50.90",
                 "Gramado",
                 "Rio Grande do Sul",
-                AvaliacoesLocal.CINCO_ESTRELAS,
+                5.0f,
                 "Lugar Maravilhoso.",
                 CategoriasLocal.PARQUE
                 );
         Local florybalChocolatesGramado  = new Local(
                 "Florybal Chocolates - A Fábrica Mágica",
-                "29.37",
+                "-29.37",
                 "-50.88",
                 "Gramado",
                 "Rio Grande do Sul",
-                AvaliacoesLocal.CINCO_ESTRELAS,
+                5.0f,
                 "Voltar para comer outras opções de chocolates.",
                 CategoriasLocal.LOJA
         );
