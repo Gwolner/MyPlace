@@ -2,7 +2,6 @@ package br.edu.ifpe.tads.pdm.myplaces.repositories;
 
 import java.util.ArrayList;
 
-import br.edu.ifpe.tads.pdm.myplaces.entities.AvaliacoesLocal;
 import br.edu.ifpe.tads.pdm.myplaces.entities.CategoriasLocal;
 import br.edu.ifpe.tads.pdm.myplaces.entities.Local;
 
