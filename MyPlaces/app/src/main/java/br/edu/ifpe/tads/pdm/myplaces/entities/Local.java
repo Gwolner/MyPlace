@@ -1,5 +1,7 @@
 package br.edu.ifpe.tads.pdm.myplaces.entities;
+import com.google.firebase.database.IgnoreExtraProperties;
 
+@IgnoreExtraProperties
 public class Local {
     private String nome;
     private String lat;
@@ -11,6 +13,7 @@ public class Local {
     private CategoriasLocal categoria;
     private String diretorioFotos; //atributo que armazena o caminho do diretório das fotos do local.
 
+    public Local(){}
     public Local(String nome, String lat, String lng, String cidade, String estado,
                  float avaliacao, String observacao, CategoriasLocal categoria){
         this.nome = nome;

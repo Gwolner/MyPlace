@@ -1,39 +1,27 @@
 package br.edu.ifpe.tads.pdm.myplaces.repositories;
 
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.Map;
 
 import br.edu.ifpe.tads.pdm.myplaces.entities.CategoriasLocal;
 import br.edu.ifpe.tads.pdm.myplaces.entities.Local;
 
 public class LocalRepository {
-    private ArrayList<Local> locais = new ArrayList<Local>();
-    private static LocalRepository instanceLocalRepository;
+    private static LocalRepository instanceLocalRepository = null;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
 
     private LocalRepository(){
-        //alimentação do banco com alguns locais
-        Local aldeiaDoPapaiNoelGramado = new Local(
-                "Aldeia do Papai Noel",
-                "-29.37",
-                "-50.90",
-                "Gramado",
-                "Rio Grande do Sul",
-                5.0f,
-                "Lugar Maravilhoso.",
-                CategoriasLocal.PARQUE
-                );
-        Local florybalChocolatesGramado  = new Local(
-                "Florybal Chocolates - A Fábrica Mágica",
-                "-29.37",
-                "-50.88",
-                "Gramado",
-                "Rio Grande do Sul",
-                5.0f,
-                "Voltar para comer outras opções de chocolates.",
-                CategoriasLocal.LOJA
-        );
-        this.adicionarLocal(aldeiaDoPapaiNoelGramado);
-        this.adicionarLocal(florybalChocolatesGramado);
-
+        this.database = FirebaseDatabase.getInstance();
+        this.myRef = database.getReference("locais");
     }
 
     public static LocalRepository getInstance() {
@@ -43,30 +31,15 @@ public class LocalRepository {
         return instanceLocalRepository;
     }
 
-    public ArrayList<Local> listarLocais(){
-        return this.locais;
+    public void adicionarLocal(String idLocal,Local local){
+        this.myRef.child(idLocal.replace(".", "")).setValue(local);
     }
 
-    public void adicionarLocal(Local local){
-        locais.add(local);
-    }
+    public Local pegarLocal(String lat, String lng){ return null; }
 
-    public Local pegarLocal(String lat, String lng){
-        for(Local l: this.locais){
-            if(l.getLat().equals(lat) && l.getLng().equals(lng)){
-                return l;
-            }
-        }
-        return null;
-    }
+    public void deletarLocal(String lat, String lng){ }
 
-    public void deletarLocal(String lat, String lng){
-        this.locais.remove(pegarLocal(lat, lng));
-    }
+    public void atualizarLocal(Local novosDadosLocal, String lat, String lng){ }
 
-    public void atualizarLocal(Local novosDadosLocal, String lat, String lng){
-        this.locais.remove(pegarLocal(lat, lng));
-        this.locais.add(novosDadosLocal);
-    }
 
 }
