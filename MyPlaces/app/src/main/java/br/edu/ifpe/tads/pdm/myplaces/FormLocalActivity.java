@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -69,7 +72,9 @@ public class FormLocalActivity extends AppCompatActivity {
                                 editTextCidade.getText().toString(), editTextEstado.getText().toString(),
                                 ratingBarAvaliacao.getRating(), editTextObservacao.getText().toString(), categoria);
 
-        rep.adicionarLocal(local);
+
+        String idLocal = "local"+this.lat.replace(".", "")+this.lng.replace(".", "");
+        rep.adicionarLocal(idLocal, local);
 
         Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
         startActivity(intent);

@@ -12,6 +12,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,6 +28,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.Date;
@@ -34,11 +40,16 @@ import java.util.List;
 import java.util.Locale;
 
 import br.edu.ifpe.tads.pdm.myplaces.databinding.ActivityMapsBinding;
+import br.edu.ifpe.tads.pdm.myplaces.entities.CategoriasLocal;
+import br.edu.ifpe.tads.pdm.myplaces.entities.Local;
+import br.edu.ifpe.tads.pdm.myplaces.repositories.LocalRepository;
+
+import static android.content.ContentValues.TAG;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int FINE_LOCATION_REQUEST = 23;
-    private GoogleMap mMap;
+    private GoogleMap mMap = null;
     private ActivityMapsBinding binding;
     private boolean fine_location;
 
@@ -86,6 +97,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         findViewById(R.id.button_location).setEnabled(this.fine_location);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -99,15 +117,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+
         //Rferência inicial
         LatLng gramado = new LatLng(-29.36, -50.87);
-
-        mMap.addMarker(new MarkerOptions().
-                position(gramado).
-                title("Gramado").
-                icon(BitmapDescriptorFactory.defaultMarker(240)));
-
         mMap.moveCamera(CameraUpdateFactory.newLatLng(gramado));
+
+
+        /* Registrar evento para listagem de locais (os locais são listados no momento em que
+        o evento é registrado e sempre que um local novo for persistido. */
+        FirebaseDatabase database =  FirebaseDatabase.getInstance();
+        DatabaseReference locaisRef = database.getReference("locais");
+
+        ValueEventListener locaisListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Local object and use the values to update the UI
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    Local local = ds.getValue(Local.class);
+                    LatLng coordenadas = new LatLng(Double.parseDouble(local.getLat()), Double.parseDouble(local.getLng()));
+                    mMap.addMarker(new MarkerOptions().
+                            position(coordenadas).
+                            title(local.getNome()).
+                            icon(BitmapDescriptorFactory.defaultMarker(240)));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        locaisRef.addValueEventListener(locaisListener);
 
         //Toast (mensagem na tela) quando o marcador é tocado.
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -138,8 +180,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Intent intent = new Intent(getApplicationContext(), FormLocalActivity.class);
                     intent.putExtra("cidade", nomeCidade);
                     intent.putExtra("estado", nomeEstado);
-                    intent.putExtra("lat", lat);
-                    intent.putExtra("lng", lng);
+                    intent.putExtra("lat", lat.toString());
+                    intent.putExtra("lng", lng.toString());
 
                     startActivity(intent);
 
