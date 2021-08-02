@@ -138,7 +138,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.addMarker(new MarkerOptions().
                             position(coordenadas).
                             title(local.getNome()).
-                            icon(BitmapDescriptorFactory.defaultMarker(240)));
+                            icon(BitmapDescriptorFactory.defaultMarker(corMarcador(local))));
                 }
 
             }
@@ -223,6 +223,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Essa linha habilita o botão caso o usuário tenha dado a permissão
         findViewById(R.id.button_location).setEnabled(this.fine_location);
     }
+
+    public int corMarcador(Local local){
+        //PARQUE, RESTAURANTE, BAR, MUSEU, PRAIA, LOJA, JOGO
+        CategoriasLocal categoria = local.getCategoria();
+        if(categoria.equals(CategoriasLocal.PARQUE)){
+            return 90;
+        }else if(categoria.equals(CategoriasLocal.RESTAURANTE)){
+            return 330;
+        }else if(categoria.equals(CategoriasLocal.BAR)){
+            return 30;
+        }else if(categoria.equals(CategoriasLocal.MUSEU)){
+            return 300;
+        }else if(categoria.equals(CategoriasLocal.PRAIA)){
+            return 60;
+        }else if(categoria.equals(CategoriasLocal.LOJA)){
+            return 210;
+        }else if(categoria.equals(CategoriasLocal.JOGO)){
+            return 0;
+        }else{
+            return 0;
+        }
+    }
+
 
     //Tratador de clique do botão button_location
     public void currentLocation(View view) {

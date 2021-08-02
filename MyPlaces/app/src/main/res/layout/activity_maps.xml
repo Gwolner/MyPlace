@@ -6,27 +6,41 @@
     está desabilitado por default. -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0pt"
-        map:uiZoomControls="true"
+        android:layout_weight="1"
+        map:cameraZoom="18"
         map:mapType="hybrid"
-        map:cameraZoom="10"
+        map:uiZoomControls="true"
         tools:context=".MapsActivity" />
+
     <Button
         android:id="@+id/button_location"
-        android:text="Localização Atual"
+        android:text="Sair"
         android:onClick="currentLocation"
+        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_marginTop="0dp"
         android:enabled="false"
         android:layout_weight="0"
+        />
+    <Button
+        android:id="@+id/button_locais"
+        android:text="Meus locais"
+        android:onClick="currentLocation"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="-48dp"
+        android:enabled="false"
+        android:layout_weight="0"/>
 </LinearLayout>
