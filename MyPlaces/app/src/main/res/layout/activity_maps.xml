@@ -5,6 +5,7 @@
     do usuário com um Toast. Perceba que o botão
     está desabilitado por default. -->
 <LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,28 +20,17 @@
         android:layout_height="0pt"
         android:layout_weight="1"
         map:cameraZoom="18"
-        map:mapType="hybrid"
+        map:mapType="normal"
         map:uiZoomControls="true"
         tools:context=".MapsActivity" />
 
-    <Button
-        android:id="@+id/button_location"
-        android:text="Sair"
-        android:onClick="currentLocation"
-        android:layout_height="wrap_content"
-        android:layout_width="100dp"
-        android:layout_marginTop="0dp"
-        android:enabled="false"
-        android:layout_weight="0"
-        />
-    <Button
-        android:id="@+id/button_locais"
-        android:text="Meus locais"
-        android:onClick="currentLocation"
-        android:layout_height="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bootom_navigation"
         android:layout_width="match_parent"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="-48dp"
-        android:enabled="false"
-        android:layout_weight="0"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#46A5C1"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:menu="@menu/bottom_navigation"/>
 </LinearLayout>
