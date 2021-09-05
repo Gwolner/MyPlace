@@ -1,0 +1,20 @@
+br/edu/ifpe/tads/pdm/myplaces/models/Local.java
+ br.edu.ifpe.tads.pdm.myplaces.models.Local
+ br.edu.ifpe.tads.pdm.myplaces.models.Local$1
+br/edu/ifpe/tads/pdm/myplaces/models/CategoriasLocais.java
+ br.edu.ifpe.tads.pdm.myplaces.models.CategoriasLocais
+br/edu/ifpe/tads/pdm/myplaces/BuildConfig.java
+ br.edu.ifpe.tads.pdm.myplaces.BuildConfig
+br/edu/ifpe/tads/pdm/myplaces/databinding/ActivityFormLocalBinding.java
+ br.edu.ifpe.tads.pdm.myplaces.databinding.ActivityFormLocalBinding
+br/edu/ifpe/tads/pdm/myplaces/databinding/ActivityMapsBinding.java
+ br.edu.ifpe.tads.pdm.myplaces.databinding.ActivityMapsBinding
+br/edu/ifpe/tads/pdm/myplaces/MapsActivity.java
+ br.edu.ifpe.tads.pdm.myplaces.MapsActivity
+ br.edu.ifpe.tads.pdm.myplaces.MapsActivity$1
+ br.edu.ifpe.tads.pdm.myplaces.MapsActivity$2
+ br.edu.ifpe.tads.pdm.myplaces.MapsActivity$3
+ br.edu.ifpe.tads.pdm.myplaces.MapsActivity$4
+ br.edu.ifpe.tads.pdm.myplaces.MapsActivity$5
+br/edu/ifpe/tads/pdm/myplaces/FormLocalActivity.java
+ br.edu.ifpe.tads.pdm.myplaces.FormLocalActivity
