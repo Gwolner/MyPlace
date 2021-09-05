@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/white"
+    android:id="@+id/exibeLocal"
+    tools:context=".ExibeLocalActivity">
+
+    <ViewFlipper
+        android:id="@+id/fotos"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        />
+
+
+
+
+    <LinearLayout
+        android:id="@+id/nome_categoria"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/textViewNomeLocal"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/textViewCategoria"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cidade_estado"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/textViewCidade"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/textViewEstado"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/textViewObservacao"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"/>
+
+
+
+    <EditText
+        android:id="@+id/textViewAvaliacao"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"/>
+
+
+
+</LinearLayout>

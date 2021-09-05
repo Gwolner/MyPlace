@@ -41,6 +41,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MyPlaces" >
+        <activity android:name="br.edu.ifpe.tads.pdm.myplaces.ExibeLocalActivity" />
         <activity android:name="br.edu.ifpe.tads.pdm.myplaces.FormLocalActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
