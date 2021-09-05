@@ -8,11 +8,14 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -23,16 +26,23 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import br.edu.ifpe.tads.pdm.myplaces.databinding.ActivityMapsBinding;
 import br.edu.ifpe.tads.pdm.myplaces.models.Local;
 import br.edu.ifpe.tads.pdm.myplaces.models.CategoriasLocais;
+
+import static android.graphics.BitmapFactory.decodeByteArray;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -86,7 +96,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onStart() {
         super.onStart();
-
     }
 
 
@@ -105,16 +114,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Local.listarLocaisNoMapa(mMap);
 
         //Rferência inicial
-        LatLng gramado = new LatLng(-29.36, -50.87);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(gramado));
+        LatLng recife = new LatLng(-8.059830483094396, -34.882885962724686);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(recife));
 
         //Toast (mensagem na tela) quando o marcador é tocado.
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(MapsActivity.this,
-                        "Você clicou em " + marker.getTitle(),
-                        Toast.LENGTH_SHORT).show();
+                String lat = String.valueOf(marker.getPosition().latitude);
+                String lng = String.valueOf(marker.getPosition().longitude);
+
+                Intent intent = new Intent(getApplicationContext(), ExibeLocalActivity.class);
+                intent.putExtra("lat", lat);
+                intent.putExtra("lng", lng);
+                startActivity(intent);
+                /*Toast.makeText(MapsActivity.this,
+                        "Você clicou em " + latlng,
+                        Toast.LENGTH_SHORT).show();*/
                 return false;
             }
         });

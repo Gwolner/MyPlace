@@ -10,14 +10,14 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyPlaces"
-        android:largeHeap="true"
-        android:hardwareAccelerated="false">
-
+        android:theme="@style/Theme.MyPlaces">
+        <activity android:name=".ExibeLocalActivity"></activity>
         <activity android:name=".FormLocalActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -1,9 +1,12 @@
 package br.edu.ifpe.tads.pdm.myplaces;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +22,13 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import br.edu.ifpe.tads.pdm.myplaces.models.Local;
@@ -29,7 +39,7 @@ public class FormLocalActivity extends AppCompatActivity {
     private String lat;
     private String lng;
     private static final int PICK_IMAGE = 100;
-    private ArrayList<Uri> endFotos = new ArrayList<Uri>();
+    private ArrayList<ImageView> fotos = new ArrayList<ImageView>();
     private View formLocal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +74,11 @@ public class FormLocalActivity extends AppCompatActivity {
         dropdown.setAdapter(adapter);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
     public void abrirGaleria(View view){
         Intent galeria = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(galeria, PICK_IMAGE);
@@ -74,20 +89,58 @@ public class FormLocalActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            endFotos.add(data.getData());
             LinearLayout layout = (LinearLayout) findViewById(R.id.fotos);
             ImageView imageView = new ImageView(this);
             imageView.setImageURI(data.getData());
 
+            int length = data.getData().getPath().split("/").length;
+            String nomeFoto = data.getData().getPath().split("/")[length-1];
+            imageView.setTag(nomeFoto);
+
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(200, 200);
             params.setMargins(10, 0, 10, 0);
             imageView.setLayoutParams(params);
+
+            fotos.add(imageView);
 
             layout.addView(imageView);
         }
     }
 
     public void salvarLocal(View view){
+        String latlng = lat.replace(".", "")+this.lng.replace(".", "");
+
+        //Salvando imagem no storage do FireBase
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        // Create a storage reference from our app
+        StorageReference storageRef = storage.getReference();
+        // Create a reference to "imagens/latlng/"
+
+        for(ImageView imageView: fotos) {
+            StorageReference fotosRef = storageRef.child("fotos/" + latlng + "/" + String.valueOf(imageView.getTag()));
+
+            // Get the data from an ImageView as bytes
+            imageView.setDrawingCacheEnabled(true);
+            imageView.buildDrawingCache();
+            Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] data = baos.toByteArray();
+
+            UploadTask uploadTask = fotosRef.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle unsuccessful uploads
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                    // ...
+                }
+            });
+        }
 
         EditText editTextNomeLocal = findViewById(R.id.editTextNomeLocal);
         EditText editTextCidade = findViewById(R.id.editTextCidade);
@@ -103,7 +156,7 @@ public class FormLocalActivity extends AppCompatActivity {
                                 ratingBarAvaliacao.getRating(), editTextObservacao.getText().toString(), categoria);
 
 
-        String idLocal = "local"+this.lat.replace(".", "")+this.lng.replace(".", "");
+        String idLocal = "local"+latlng;
         Local.adicionarLocal(idLocal, local);
 
         Intent intent = new Intent(getApplicationContext(), MapsActivity.class);

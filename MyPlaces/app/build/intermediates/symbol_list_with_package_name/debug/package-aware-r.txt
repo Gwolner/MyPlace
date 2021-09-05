@@ -1878,6 +1878,7 @@ id chip2
 id chip3
 id chip_group
 id chronometer
+id cidade_estado
 id circle_center
 id clear_text
 id clip_horizontal
@@ -1935,6 +1936,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id exibeLocal
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2053,6 +2055,7 @@ id nav_user
 id navigation_header_container
 id never
 id noScroll
+id nome_categoria
 id none
 id normal
 id notification_background
@@ -2173,6 +2176,12 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textViewAvaliacao
+id textViewCategoria
+id textViewCidade
+id textViewEstado
+id textViewNomeLocal
+id textViewObservacao
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2276,6 +2285,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_exibe_local
 layout activity_form_local
 layout activity_maps
 layout browser_actions_context_menu_page
