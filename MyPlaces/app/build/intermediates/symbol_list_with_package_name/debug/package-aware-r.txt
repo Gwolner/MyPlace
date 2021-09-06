@@ -1931,6 +1931,9 @@ id editTextCidade
 id editTextEstado
 id editTextNomeLocal
 id editTextObservacao
+id edit_email
+id edit_name
+id edit_password
 id edit_query
 id elastic
 id end
@@ -2050,6 +2053,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nav_close
 id nav_home
 id nav_list
 id nav_user
@@ -2287,6 +2291,8 @@ layout abc_tooltip
 layout activity_exibe_local
 layout activity_form_local
 layout activity_maps
+layout activity_sign_in
+layout activity_sign_up
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog

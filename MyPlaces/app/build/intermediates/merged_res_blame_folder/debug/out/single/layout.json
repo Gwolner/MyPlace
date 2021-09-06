@@ -1,14 +1,22 @@
 [
     {
-        "merged": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_exibe_local.xml",
-        "source": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\layout\\activity_exibe_local.xml"
+        "merged": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_form_local.xml",
+        "source": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\layout\\activity_form_local.xml"
     },
     {
-        "merged": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_form_local.xml",
-        "source": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\layout\\activity_form_local.xml"
+        "merged": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_maps.xml",
+        "source": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\layout\\activity_maps.xml"
     },
     {
-        "merged": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_maps.xml",
-        "source": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\layout\\activity_maps.xml"
+        "merged": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_exibe_local.xml",
+        "source": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\layout\\activity_exibe_local.xml"
+    },
+    {
+        "merged": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_sign_in.xml",
+        "source": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\layout\\activity_sign_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_sign_up.xml",
+        "source": "C:\\Users\\wolner\\Desktop\\Loloca\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\layout\\activity_sign_up.xml"
     }
 ]
