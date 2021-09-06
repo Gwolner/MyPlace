@@ -11,44 +11,101 @@
     android:id="@+id/formLocal"
     tools:context=".FormLocalActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:labelFor="@id/editTextNomeLocal"
+        android:text="Nome do Local"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <EditText
         android:id="@+id/editTextNomeLocal"
-        android:layout_width="213dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="Nome do Local"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:labelFor="@id/editTextEstado"
+        android:text="Estado"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <EditText
         android:id="@+id/editTextEstado"
-        android:layout_width="213dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="Estado"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:labelFor="@id/editTextCidade"
+        android:text="Cidade"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <EditText
         android:id="@+id/editTextCidade"
-        android:layout_width="213dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="Cidade"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:labelFor="@id/spinnerCategorias"
+        android:text="Categoria"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <Spinner
         android:id="@+id/spinnerCategorias"
-        android:layout_width="213dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edit_text_border"
         android:hint="Categoria" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:labelFor="@id/editTextObservacao"
+        android:text="Observação"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <EditText
         android:id="@+id/editTextObservacao"
-        android:layout_width="213dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edit_text_border"
         android:hint="Observação"
         android:inputType="textMultiLine" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:labelFor="@id/ratingBarAvaliacao"
+        android:text="Avaliação"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
     <RatingBar
         android:id="@+id/ratingBarAvaliacao"
         android:layout_width="wrap_content"

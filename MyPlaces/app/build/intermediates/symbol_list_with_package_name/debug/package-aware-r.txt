@@ -1714,6 +1714,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable edit_text_border
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable home
@@ -1779,6 +1780,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id VFFotos
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -1878,7 +1880,6 @@ id chip2
 id chip3
 id chip_group
 id chronometer
-id cidade_estado
 id circle_center
 id clear_text
 id clip_horizontal
@@ -2055,7 +2056,6 @@ id nav_user
 id navigation_header_container
 id never
 id noScroll
-id nome_categoria
 id none
 id normal
 id notification_background
@@ -2176,7 +2176,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textViewAvaliacao
 id textViewCategoria
 id textViewCidade
 id textViewEstado
