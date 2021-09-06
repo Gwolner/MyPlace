@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MapsActivity">
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_baseline_home_24"
@@ -12,4 +15,9 @@
         android:id="@+id/nav_user"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Perfil"/>
+    <item
+        android:id="@+id/nav_close"
+        android:icon="@drawable/common_full_open_on_phone"
+        android:onClick="buttonSignOutClick"
+        android:title="Sair" />
 </menu>
