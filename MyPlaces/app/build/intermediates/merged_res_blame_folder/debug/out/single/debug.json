@@ -152,6 +152,10 @@
         "source": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_home_24.png"
     },
     {
+        "merged": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edit_text_border.xml.flat",
+        "source": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\src\\main\\res\\drawable\\edit_text_border.xml"
+    },
+    {
         "merged": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_format_list_bulleted_24.png.flat",
         "source": "C:\\Users\\marco\\AndroidStudioProjects\\disp-moveis-my-place\\MyPlaces\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_format_list_bulleted_24.png"
     },

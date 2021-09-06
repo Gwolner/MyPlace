@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,18 +28,26 @@ import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import br.edu.ifpe.tads.pdm.myplaces.models.Local;
 
+import static android.R.anim.slide_in_left;
+import static android.R.anim.slide_out_right;
+import static android.animation.ValueAnimator.ofInt;
 import static android.graphics.BitmapFactory.decodeByteArray;
 
 public class ExibeLocalActivity extends AppCompatActivity {
     private static ArrayList<Bitmap> fotosBM = new ArrayList<Bitmap>();
+    private ViewFlipper vf;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exibe_local);
+
+        vf = findViewById(R.id.VFFotos);
 
         Bundle extras = getIntent().getExtras();
         String lat = extras.getString("lat");
@@ -62,17 +72,12 @@ public class ExibeLocalActivity extends AppCompatActivity {
                                     // Data for "images/island.jpg" is returns, use this as needed
                                     Bitmap fotoBM = decodeByteArray(bytes,0,bytes.length);
 
-                                    ViewFlipper vf = findViewById(R.id.fotos);
-
                                     ImageView imageView = new ImageView(getApplicationContext());
+
                                     imageView.setImageBitmap(fotoBM);
 
                                     vf.addView(imageView);
-                                    vf.setFlipInterval(4000);//4 segundos
-                                    vf.setAutoStart(true);
 
-                                    //vf.setAnimation(getApplicationContext(), android.R.anim.slide_in_left);
-                                    //vf.setAnimation(getApplicationContext(), android.R.anim.slide_out_right);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -115,11 +120,19 @@ public class ExibeLocalActivity extends AppCompatActivity {
                     textViewEstado.setText(local.getEstado());
                     TextView textViewObservacao = findViewById(R.id.textViewObservacao);
                     textViewObservacao.setText(local.getObservacao());
-                    TextView textViewAvaliacao = findViewById(R.id.textViewAvaliacao);
-                    textViewAvaliacao.setText(String.valueOf(local.getAvaliacao()));
+                    RatingBar ratingBarAvaliacao = findViewById(R.id.ratingBarAvaliacao);
+                    ratingBarAvaliacao.setRating(local.getAvaliacao());
                 }
             }
         });
 
+    }
+
+    public void viewAnterior(View view){
+        vf.showPrevious();
+    }
+
+    public void viewProxima(View view){
+        vf.showNext();
     }
 }

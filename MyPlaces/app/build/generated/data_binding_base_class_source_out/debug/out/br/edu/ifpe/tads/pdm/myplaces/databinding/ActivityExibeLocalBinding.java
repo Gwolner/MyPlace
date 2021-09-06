@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.ViewFlipper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,19 +21,13 @@ public final class ActivityExibeLocalBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final LinearLayout cidadeEstado;
+  public final ViewFlipper VFFotos;
 
   @NonNull
   public final LinearLayout exibeLocal;
 
   @NonNull
-  public final ViewFlipper fotos;
-
-  @NonNull
-  public final LinearLayout nomeCategoria;
-
-  @NonNull
-  public final EditText textViewAvaliacao;
+  public final RatingBar ratingBarAvaliacao;
 
   @NonNull
   public final EditText textViewCategoria;
@@ -49,18 +44,15 @@ public final class ActivityExibeLocalBinding implements ViewBinding {
   @NonNull
   public final EditText textViewObservacao;
 
-  private ActivityExibeLocalBinding(@NonNull LinearLayout rootView,
-      @NonNull LinearLayout cidadeEstado, @NonNull LinearLayout exibeLocal,
-      @NonNull ViewFlipper fotos, @NonNull LinearLayout nomeCategoria,
-      @NonNull EditText textViewAvaliacao, @NonNull EditText textViewCategoria,
-      @NonNull EditText textViewCidade, @NonNull EditText textViewEstado,
-      @NonNull EditText textViewNomeLocal, @NonNull EditText textViewObservacao) {
+  private ActivityExibeLocalBinding(@NonNull LinearLayout rootView, @NonNull ViewFlipper VFFotos,
+      @NonNull LinearLayout exibeLocal, @NonNull RatingBar ratingBarAvaliacao,
+      @NonNull EditText textViewCategoria, @NonNull EditText textViewCidade,
+      @NonNull EditText textViewEstado, @NonNull EditText textViewNomeLocal,
+      @NonNull EditText textViewObservacao) {
     this.rootView = rootView;
-    this.cidadeEstado = cidadeEstado;
+    this.VFFotos = VFFotos;
     this.exibeLocal = exibeLocal;
-    this.fotos = fotos;
-    this.nomeCategoria = nomeCategoria;
-    this.textViewAvaliacao = textViewAvaliacao;
+    this.ratingBarAvaliacao = ratingBarAvaliacao;
     this.textViewCategoria = textViewCategoria;
     this.textViewCidade = textViewCidade;
     this.textViewEstado = textViewEstado;
@@ -95,29 +87,17 @@ public final class ActivityExibeLocalBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.cidade_estado;
-      LinearLayout cidadeEstado = rootView.findViewById(id);
-      if (cidadeEstado == null) {
+      id = R.id.VFFotos;
+      ViewFlipper VFFotos = rootView.findViewById(id);
+      if (VFFotos == null) {
         break missingId;
       }
 
       LinearLayout exibeLocal = (LinearLayout) rootView;
 
-      id = R.id.fotos;
-      ViewFlipper fotos = rootView.findViewById(id);
-      if (fotos == null) {
-        break missingId;
-      }
-
-      id = R.id.nome_categoria;
-      LinearLayout nomeCategoria = rootView.findViewById(id);
-      if (nomeCategoria == null) {
-        break missingId;
-      }
-
-      id = R.id.textViewAvaliacao;
-      EditText textViewAvaliacao = rootView.findViewById(id);
-      if (textViewAvaliacao == null) {
+      id = R.id.ratingBarAvaliacao;
+      RatingBar ratingBarAvaliacao = rootView.findViewById(id);
+      if (ratingBarAvaliacao == null) {
         break missingId;
       }
 
@@ -151,9 +131,9 @@ public final class ActivityExibeLocalBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityExibeLocalBinding((LinearLayout) rootView, cidadeEstado, exibeLocal, fotos,
-          nomeCategoria, textViewAvaliacao, textViewCategoria, textViewCidade, textViewEstado,
-          textViewNomeLocal, textViewObservacao);
+      return new ActivityExibeLocalBinding((LinearLayout) rootView, VFFotos, exibeLocal,
+          ratingBarAvaliacao, textViewCategoria, textViewCidade, textViewEstado, textViewNomeLocal,
+          textViewObservacao);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
