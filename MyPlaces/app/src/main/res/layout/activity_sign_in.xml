@@ -4,54 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#706C6C"
+    android:background="@color/white"
     android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
     tools:context=".SignInActivity">
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/logo"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Login"
-        android:textColor="#F8F4F4"
+        android:textColor="@color/black"
         android:textSize="30sp" />
 
     <EditText
         android:id="@+id/edit_email"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="#46A5C1"
+        android:background="@drawable/edit_text_border"
         android:hint="E-mail"
-        android:text="futebol@gmail.com"
-        android:textColor="#F8F4F4" />
+        android:text="marcos@gmail.com"
+        android:textColor="@color/black" />
 
     <EditText
         android:id="@+id/edit_password"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="#46A5C1"
+        android:background="@drawable/edit_text_border"
         android:hint="Password"
         android:inputType="textPassword"
-        android:text="futebol123"
-        android:textColor="#F8F4F4" />
+        android:text="Marcos123"
+        android:textColor="@color/black" />
+
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:onClick="buttonSignInClick"
         android:text="Acessar"
         app:backgroundTint="#46A5C1" />
 
     <Button
-        android:layout_width="134dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="-50dp"
         android:onClick="buttonRegisterClick"
         android:text="Registrar"
         app:backgroundTint="#46A5C1"/>

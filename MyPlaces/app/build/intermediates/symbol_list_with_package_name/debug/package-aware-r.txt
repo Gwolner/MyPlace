@@ -1725,6 +1725,7 @@ drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_logo_background
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -2056,7 +2057,6 @@ id multiply
 id nav_close
 id nav_home
 id nav_list
-id nav_user
 id navigation_header_container
 id never
 id noScroll
@@ -2380,6 +2380,10 @@ layout text_view_without_line_height
 menu bottom_navigation
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap ic_logo
+mipmap ic_logo_foreground
+mipmap ic_logo_round
+mipmap logo
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description
