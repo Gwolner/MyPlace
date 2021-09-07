@@ -57,23 +57,22 @@ public class ExibeLocalActivity extends AppCompatActivity {
 
         /* Download das imagens associadas ao local clicado */
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference listRef = storage.getReference().child("fotos/"+latlng);
+        StorageReference listRef = storage.getReference().child("fotos");
 
-        listRef.listAll()
+        listRef.child("local"+latlng).listAll()
                 .addOnSuccessListener(new OnSuccessListener<ListResult>() {
                     @Override
                     public void onSuccess(ListResult listResult) {
                         for (StorageReference foto : listResult.getItems()) {
                             // All the items under listRef.
-                            final long FIVE_MEGABYTES = 1024 * 1024 * 5;
-                            foto.getBytes(FIVE_MEGABYTES).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                            final long LIMITE = 1024 * 1024 * 100;
+                            foto.getBytes(LIMITE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                                 @Override
                                 public void onSuccess(byte[] bytes) {
                                     // Data for "images/island.jpg" is returns, use this as needed
                                     Bitmap fotoBM = decodeByteArray(bytes,0,bytes.length);
 
                                     ImageView imageView = new ImageView(getApplicationContext());
-
                                     imageView.setImageBitmap(fotoBM);
 
                                     vf.addView(imageView);

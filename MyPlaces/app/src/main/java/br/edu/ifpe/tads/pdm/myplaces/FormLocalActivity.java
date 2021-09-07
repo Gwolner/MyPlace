@@ -113,11 +113,11 @@ public class FormLocalActivity extends AppCompatActivity {
         //Salvando imagem no storage do FireBase
         FirebaseStorage storage = FirebaseStorage.getInstance();
         // Create a storage reference from our app
-        StorageReference storageRef = storage.getReference();
+        StorageReference storageRef = storage.getReference("fotos");
         // Create a reference to "imagens/latlng/"
 
         for(ImageView imageView: fotos) {
-            StorageReference fotosRef = storageRef.child("fotos/" + latlng + "/" + String.valueOf(imageView.getTag()));
+            StorageReference fotosRef = storageRef.child("local"+latlng + "/" + String.valueOf(imageView.getTag()));
 
             // Get the data from an ImageView as bytes
             imageView.setDrawingCacheEnabled(true);
